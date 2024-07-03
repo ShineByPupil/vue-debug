@@ -10,6 +10,13 @@
       "request": "launch",
       "type": "node-terminal",
       "cwd": "${workspaceFolder}/vite-vue3-app" // 指定工作目录为 vite-vue3-app
+    },
+    {
+      "command": "npm run serve",
+      "name": "Run Vue2 App",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/vue2-app" // 指定工作目录
     }
   ]
 }

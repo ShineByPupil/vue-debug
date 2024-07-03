@@ -2,12 +2,24 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Install vue3",
+      "label": "First Install",
       "dependsOrder": "sequence",
-      "dependsOn": ["Install vite-vue3-app", "Install vue3-submodule"],
+      "dependsOn": [
+        "Init Submodules",
+        "Install vite-vue3-app",
+        "Install vue3-submodule"
+      ],
       "problemMatcher": [],
       "group": "build",
-      "detail": "首次运行时，会自动安装所有依赖"
+      "detail": "【首次运行】（安装所有依赖）"
+    },
+    {
+      "label": "Init Submodules",
+      "type": "shell",
+      "command": "git submodule update --init",
+      "problemMatcher": [],
+      "group": "none",
+      "detail": "【初始化子模块】（仓库版本）"
     },
     {
       "label": "Update Submodules",
@@ -15,7 +27,7 @@
       "command": "git submodule update --remote --merge",
       "problemMatcher": [],
       "group": "build",
-      "detail": "更新子模块"
+      "detail": "【更新子模块】（远程最新）"
     },
     {
       "label": "Install vite-vue3-app",
@@ -25,7 +37,7 @@
         "cwd": "${workspaceFolder}/vite-vue3-app"
       },
       "problemMatcher": [],
-      "group": "build",
+      "group": "none", // 将任务从默认组中排除
       "detail": "vite-vue3-app依赖安装"
     },
     {
@@ -36,7 +48,7 @@
         "cwd": "${workspaceFolder}/vite-vue3-app"
       },
       "problemMatcher": [],
-      "group": "build",
+      "group": "none", // 将任务从默认组中排除
       "detail": "vue3-submodule依赖安装"
     }
   ]

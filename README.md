@@ -36,7 +36,7 @@ control + shift + B，选择任务 Install vue3(使用 vscode 任务配置，执
 </template>
 ```
 
-## 仓库从无到有
+## vue3 源码项目
 
 ### 目录结构
 
@@ -166,6 +166,57 @@ export default defineConfig({
 +   __FEATURE_PROD_DEVTOOLS__:
 +     process.env.NODE_ENV === 'production' ? 'false' : 'true', // 生产环境下禁用开发工具
 +   __FEATURE_PROD_HYDRATION_MISMATCH_DETAILS__: 'false', // 禁用生产环境中的水合不匹配详情
++ },
+});
+```
+
+## vue2 源码项目
+
+### 命令流程
+
+```bash
+git submodule add https://github.com/vuejs/vue.git vue2-submodule
+
+# 需要安装ts
+vue create vue2-app
+```
+
+### 修改 vue.config.js 配置文件
+
+```diff
+const { defineConfig } = require('@vue/cli-service');
++ const webpack = require('webpack');
++ const path = require('path');
++
+module.exports = defineConfig({
+  transpileDependencies: true,
++ configureWebpack: {
++   plugins: [
++     new webpack.DefinePlugin({
++       __DEV__: JSON.stringify(process.env.NODE_ENV !== 'production'),
++     }),
++   ],
++   resolve: {
++     alias: {
++       vue$: path.resolve(
++         __dirname,
++         '../vue2-submodule/src/platforms/web/entry-runtime-with-compiler.ts'
++       ),
++       compiler: path.resolve(__dirname, '../vue2-submodule/src/compiler'),
++       core: path.resolve(__dirname, '../vue2-submodule/src/core'),
++       server: path.resolve(__dirname, '../vue2-submodule/src/server'),
++       sfc: path.resolve(
++         __dirname,
++         '../vue2-submodule/packages/compiler-sfc/src'
++       ),
++       shared: path.resolve(__dirname, '../vue2-submodule/src/shared'),
++       web: path.resolve(__dirname, '../vue2-submodule/src/platforms/web'),
++       v3: path.resolve(__dirname, '../vue2-submodule/src/v3'),
++       'v3/*': path.resolve(__dirname, '../vue2-submodule/src/v3/*'),
++       types: path.resolve(__dirname, '../vue2-submodule/src/types'),
++     },
++     extensions: ['.js', '.ts', '.vue', '.json'], // 确保Webpack能够解析这些扩展名
++   },
 + },
 });
 ```
