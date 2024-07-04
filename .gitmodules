@@ -1,3 +1,6 @@
 [submodule "vue3-submodule"]
 	path = vue3-submodule
 	url = https://github.com/vuejs/core.git
+[submodule "vue2-submodule"]
+	path = vue2-submodule
+	url = https://github.com/vuejs/vue.git
