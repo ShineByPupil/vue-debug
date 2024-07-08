@@ -7,6 +7,7 @@
       "dependsOn": [
         "Init Submodules",
         "Install vite-vue3-app",
+        "Install vue2-app",
         "Install vue3-submodule"
       ],
       "problemMatcher": [],
@@ -39,6 +40,17 @@
       "problemMatcher": [],
       "group": "none", // 将任务从默认组中排除
       "detail": "vite-vue3-app依赖安装"
+    },
+    {
+      "label": "Install vue2-app",
+      "type": "shell",
+      "command": "pnpm install",
+      "options": {
+        "cwd": "${workspaceFolder}/vue2-app"
+      },
+      "problemMatcher": [],
+      "group": "none", // 将任务从默认组中排除
+      "detail": "vue2-app依赖安装"
     },
     {
       "label": "Install vue3-submodule",
