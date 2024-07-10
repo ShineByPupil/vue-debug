@@ -220,3 +220,7 @@ module.exports = defineConfig({
 + },
 });
 ```
+
+## 输出知识点
+
+[跳转到 document 文档](./document/README.md)
